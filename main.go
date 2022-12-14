@@ -7,7 +7,6 @@ import (
 
 	"github.com/ryutah/step-by-step-go-grpc/helloworld"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 )
 
 // リクエストを受け取るサーバの実装をする
@@ -36,8 +35,6 @@ func main() {
 
 	s := grpc.NewServer()
 	helloworld.RegisterGreeterServer(s, &server{})
-
-	reflection.Register(s)
 
 	if err := s.Serve(lis); err != nil {
 		panic(err)
