@@ -74,6 +74,30 @@ go run .
 
 [see](https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tutorial.md#enable-server-reflection)
 
+```diff
+diff --git a/main.go b/main.go
+index c1c49e9..66928c9 100644
+--- a/main.go
++++ b/main.go
+@@ -7,6 +7,7 @@ import (
+
+        "github.com/ryutah/step-by-step-go-grpc/helloworld"
+        "google.golang.org/grpc"
++       "google.golang.org/grpc/reflection"
+ )
+
+ // リクエストを受け取るサーバの実装をする
+@@ -36,6 +37,8 @@ func main() {
+        s := grpc.NewServer()
+        helloworld.RegisterGreeterServer(s, &server{})
+
++       reflection.Register(s)
++
+        if err := s.Serve(lis); err != nil {
+                panic(err)
+        }
+```
+
 ## Step 9. Exec API
 
 ```console
