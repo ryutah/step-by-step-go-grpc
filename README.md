@@ -30,7 +30,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 ```proto
 syntax = "proto3";
 
-option go_package = "helloworld";
+option go_package = "github.com/ryutah/step-by-step-go-grpc/helloworld";
 
 package helloworld;
 
